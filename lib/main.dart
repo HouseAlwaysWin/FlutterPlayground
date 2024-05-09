@@ -3,6 +3,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:go_router/go_router.dart';
 import 'package:play_ground/screens/play-session-screen.dart';
 import 'package:play_ground/services/header_menu.dart';
+import 'package:play_ground/services/storage_manager.dart';
 import 'package:play_ground/services/theme_manager.dart';
 import 'package:provider/provider.dart';
 import 'package:play_ground/screens/main-menu-screen.dart';
@@ -70,9 +71,6 @@ class _MyHomePageState extends State<MyHomePage> {
           ChangeNotifierProvider<ThemeManager>(
             create: (context) => ThemeManager(),
           ),
-          ChangeNotifierProvider<HeaderMenu>(
-            create: (context) => HeaderMenu(),
-          )
         ],
         child: Builder(builder: (context) {
           final palette = context.watch<Palette>();
