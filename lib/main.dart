@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:go_router/go_router.dart';
-import 'package:play_ground/screens/play-session-screen.dart';
-import 'package:play_ground/services/header_menu.dart';
+import 'package:play_ground/screens/drag_and_drop_demo.dart';
 import 'package:play_ground/services/storage_manager.dart';
 import 'package:play_ground/services/theme_manager.dart';
 import 'package:provider/provider.dart';
-import 'package:play_ground/screens/main-menu-screen.dart';
+import 'package:play_ground/screens/theme_change_demo.dart';
 import 'package:play_ground/style/my_transition.dart';
 import 'package:play_ground/style/palette.dart';
 
@@ -62,7 +61,6 @@ class _MyHomePageState extends State<MyHomePage> {
   //     _counter++;
   //   });
   // }
-
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -109,7 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 final router = GoRouter(
-  initialLocation: '/',
+  initialLocation: '/drag_and_drop',
   routes: [
     ShellRoute(
         builder: (
@@ -120,7 +118,7 @@ final router = GoRouter(
           return Scaffold(
               appBar: AppBar(
                 title: const Text(
-                  'Menu',
+                  'Flutter 範例',
                   style: TextStyle(color: Colors.white),
                 ),
                 backgroundColor: Theme.of(context).primaryColor,
@@ -144,7 +142,7 @@ final router = GoRouter(
                           )),
                     ),
                     ListTile(
-                      title: const Text('Home'),
+                      title: const Text('主題切換'),
                       onTap: () {
                         // Update the state of the app
                         // _onItemTapped(0);
@@ -154,11 +152,11 @@ final router = GoRouter(
                       },
                     ),
                     ListTile(
-                      title: const Text('Business'),
+                      title: const Text('拖拉範例'),
                       onTap: () {
                         // Update the state of the app
                         // _onItemTapped(1);
-                        GoRouter.of(context).go('/play');
+                        GoRouter.of(context).go('/drag_and_drop');
                         // Then close the drawer
                         Navigator.pop(context);
                       },
@@ -171,12 +169,12 @@ final router = GoRouter(
           GoRoute(
             path: '/',
             pageBuilder: (context, state) => const NoTransitionPage(
-                child: MainMenuScreen(key: Key('main menu'))),
+                child: ThemeChangeDemo(key: Key('main menu'))),
           ),
           GoRoute(
-            path: '/play',
+            path: '/drag_and_drop',
             pageBuilder: (context, state) => const NoTransitionPage(
-                child: PlaySessionScreen(key: Key('main menu'))),
+                child: DragAndDropDemo(key: Key('main menu'))),
           ),
         ]),
   ],
