@@ -123,7 +123,7 @@ class PlayingUnoCardState extends StatelessWidget {
   Widget build(BuildContext context) {
     return Draggable(
       feedback: card,
-      data: PlayingCardInfo(),
+      data: PlayingCardInfo(UnoCard('assets/uno/images/blue0.png')),
       child: card,
     );
   }
@@ -131,6 +131,43 @@ class PlayingUnoCardState extends StatelessWidget {
 
 class BoardState {
   List<UnoCard> allCards = [];
+  BoardState() {
+    initCards();
+  }
+
+  void initCards() {
+    for (var i = 0; i < 13; i++) {
+      if (i < 10) {
+        allCards.add(UnoCard('assets/uno/images/blue$i.png'));
+        allCards.add(UnoCard('assets/uno/images/green$i.png'));
+        allCards.add(UnoCard('assets/uno/images/red$i.png'));
+        allCards.add(UnoCard('assets/uno/images/yellow$i.png'));
+      }
+      if (i == 10) {
+        allCards.add(UnoCard('assets/uno/images/blueDrawTwo.png'));
+        allCards.add(UnoCard('assets/uno/images/greenDrawTwo.png'));
+        allCards.add(UnoCard('assets/uno/images/redDrawTwo.png'));
+        allCards.add(UnoCard('assets/uno/images/yellowDrawTwo.png'));
+      }
+      if (i == 11) {
+        allCards.add(UnoCard('assets/uno/images/blueReverse.png'));
+        allCards.add(UnoCard('assets/uno/images/greenReverse.png'));
+        allCards.add(UnoCard('assets/uno/images/redReverse.png'));
+        allCards.add(UnoCard('assets/uno/images/yellowReverse.png'));
+      }
+      if (i == 12) {
+        allCards.add(UnoCard('assets/uno/images/blueSkip.png'));
+        allCards.add(UnoCard('assets/uno/images/greenSkip.png'));
+        allCards.add(UnoCard('assets/uno/images/redSkip.png'));
+        allCards.add(UnoCard('assets/uno/images/yellowSkip.png'));
+      }
+    }
+
+    for (var i = 0; i < 4; i++) {
+      allCards.add(UnoCard('assets/uno/images/wild.png'));
+      allCards.add(UnoCard('assets/uno/images/wildDrawFour.png'));
+    }
+  }
 }
 
 @immutable
